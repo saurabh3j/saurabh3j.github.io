@@ -87,3 +87,13 @@
 .navbar a:hover {
   color: #0056b3;
 }
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  margin-top: 60px;
+}
+
+.page-container h2 {
+  color: #0a2540;
+}
