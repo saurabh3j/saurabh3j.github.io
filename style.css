@@ -23,3 +23,48 @@
   margin-top: 10px;
   font-size: 18px;
 }
+/* ===== BLOG CARD WITH THUMBNAIL ===== */
+.post-card {
+  display: flex;
+  gap: 20px;
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  align-items: center;
+}
+
+.post-thumb {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.post-content h2 {
+  margin: 0;
+  color: #0a2540;
+}
+
+.post-content .date {
+  font-size: 14px;
+  color: #777;
+  margin: 6px 0 10px;
+}
+
+.post-content p {
+  margin: 0 0 10px;
+  color: #444;
+}
+
+.read-more {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0a2540;
+}
+
+.read-more:hover {
+  color: #0056b3;
+}
