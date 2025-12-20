@@ -58,3 +58,7 @@ body {
   padding: 15px;
   font-size: 14px;
 }
+.site-logo {
+  max-width: 120px;
+  margin-bottom: 10px;
+}
