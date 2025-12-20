@@ -44,6 +44,8 @@
 }
 
 .post-content h2 {
+  font-size: 32px;
+  font-weight: bold;
   margin: 0;
   color: #0a2540;
 }
