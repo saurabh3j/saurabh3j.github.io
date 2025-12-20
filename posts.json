@@ -12,6 +12,7 @@
     "title": "Importance of Safety in Engineering",
     "date": "13 December 2025",
     "excerpt": "Safety must be embedded into every engineering decision.",
+    "thumbnail": "images/thumb2.jpg",
     "content": "Engineering projects involve risks at every stage. Prioritizing safety helps reduce failures, protect people, and improve long-term system performance."
   },
   {
@@ -19,6 +20,7 @@
     "title": "Building a Strong Safety Culture in Engineering Projects",
     "date": "20 December 2025",
     "excerpt": "A deep dive into how organizations can build and sustain a strong safety culture.",
+    "thumbnail": "images/thumb3.jpg",
     "content": "A strong safety culture is built on leadership commitment, employee involvement, effective training, and proactive risk management. Organizations that invest in safety culture experience fewer incidents and achieve sustainable success."
   }
 ]
