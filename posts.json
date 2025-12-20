@@ -3,14 +3,21 @@
     "id": 1,
     "title": "Welcome to SafeNex",
     "date": "12 December 2025",
-    "excerpt": "Introducing SafeNex – a professional blog on engineering, safety, and technology.",
-    "content": "SafeNex is created to share engineering knowledge..."
+    "excerpt": "SafeNex is a professional platform focused on engineering, safety, and technology.",
+    "content": "SafeNex is created to share engineering knowledge, safety practices, and modern technology insights. The goal is to help professionals and learners build safer and more reliable systems."
   },
   {
     "id": 2,
-    "title": "Building a Strong Safety Culture in Engineering Projects: Principles, Practices, and Long-Term Benefits",
-    "date": "12 December 2025",
-    "excerpt": "Safety culture is the foundation of successful engineering projects.",
-    "content": "Safety culture is one of the most critical yet often underestimated aspects of engineering projects..."
+    "title": "Importance of Safety in Engineering",
+    "date": "13 December 2025",
+    "excerpt": "Safety must be embedded into every engineering decision.",
+    "content": "Engineering projects involve risks at every stage. Prioritizing safety helps reduce failures, protect people, and improve long-term system performance."
+  },
+  {
+    "id": 3,
+    "title": "Building a Strong Safety Culture in Engineering Projects",
+    "date": "20 December 2025",
+    "excerpt": "A deep dive into how organizations can build and sustain a strong safety culture.",
+    "content": "A strong safety culture is built on leadership commitment, employee involvement, effective training, and proactive risk management. Organizations that invest in safety culture experience fewer incidents and achieve sustainable success."
   }
 ]
