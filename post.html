@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SafeNex | Blog Post</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Post | SafeNex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="site-header">
-  <h1><a href="index.html">SafeNex</a></h1>
-</header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1>SafeNex</h1>
+      <p>The Next Generation of Process Safety</p>
+    </div>
+  </header>
 
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-<main id="post" class="container"></main>
+  <!-- POST CONTENT -->
+  <main class="page-container" id="post-content">
+    Loading post...
+  </main>
 
-<footer class="footer">
-  <p>© 2025 SafeNex</p>
-</footer>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    © 2025 SafeNex
+  </footer>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const postId = params.get('id');
+  <!-- SCRIPT -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get("id");
 
-fetch('posts.json')
-.then(res => res.json())
-.then(posts => {
-  const post = posts.find(p => p.id == postId);
-  if(post){
-    document.getElementById('post').innerHTML = `
-      <article class="post-full">
-        <h2>${post.title}</h2>
-        <p class="date">${post.date}</p>
-        <p>${post.content}</p>
-      </article>
-    `;
-  }
-});
-</script>
+    fetch("posts.json")
+      .then(res => res.json())
+      .then(posts => {
+        const post = posts.find(p => p.id == postId);
+        if (!post) {
+          document.getElementById("post-content").innerHTML = "<p>Post not found.</p>";
+          return;
+        }
+
+        document.getElementById("post-content").innerHTML = `
+          <h2>${post.title}</h2>
+          <div class="date">${post.date}</div>
+          <p>${post.content}</p>
+        `;
+      });
+  </script>
 
 </body>
 </html>
