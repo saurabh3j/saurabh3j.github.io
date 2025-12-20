@@ -1,7 +1,16 @@
 [
   {
     "id": 1,
-    "title": "Welcome to SafeNex, Stay tuned for further updates 🎉",
+    "title": "Welcome to SafeNex",
     "date": "12 December 2025",
+    "excerpt": "Introducing SafeNex – a professional blog on engineering, safety, and technology.",
+    "content": "SafeNex is created to share engineering knowledge, safety practices, and modern technology insights. This platform aims to help professionals and learners build safer systems."
   },
+  {
+    "id": 2,
+    "title": "Importance of Safety in Engineering",
+    "date": "13 December 2025",
+    "excerpt": "Why safety must be integrated into every engineering decision.",
+    "content": "Safety is not optional in engineering. From design to operation, safety-focused decisions reduce failures, protect lives, and improve system reliability."
+  }
 ]
