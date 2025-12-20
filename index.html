@@ -35,11 +35,14 @@ fetch('posts.json')
     const container = document.getElementById('posts');
     posts.forEach(post => {
       container.innerHTML += `
-        <article>
-          <h2>${post.title}</h2>
-          <div class="date">${post.date}</div>
-          <p>${post.excerpt}</p>
-          <a href="post.html?id=${post.id}">Read More</a>
+        <article class="post-card">
+          <img src="${post.thumbnail}" alt="${post.title}" class="post-thumb">
+          <div class="post-content">
+            <h2>${post.title}</h2>
+            <div class="date">${post.date}</div>
+            <p>${post.excerpt}</p>
+            <a href="post.html?id=${post.id}" class="read-more">Read More →</a>
+          </div>
         </article>
       `;
     });
