@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeNex | Blog Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1><a href="index.html">SafeNex</a></h1>
+</header>
+
+<nav>
+    <a href="index.html">← Back to Blog</a>
+</nav>
+
+<main id="post"></main>
+
+<footer>
+    <p>© 2025 SafeNex</p>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const postId = params.get('id');
+
+fetch('posts.json')
+.then(response => response.json())
+.then(posts => {
+    const post = posts.find(p => p.id == postId);
+    if(post){
+        document.getElementById('post').innerHTML = `
+            <article>
+                <h2>${post.title}</h2>
+                <p class="date">${post.date}</p>
+                <p>${post.content}</p>
+            </article>
+        `;
+    }
+});
+</script>
+
+</body>
+</html>

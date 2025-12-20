@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to SafeNex",
+    "date": "10 December 2025",
+    "excerpt": "SafeNex is a blog focused on technology, safety, and engineering knowledge.",
+    "content": "Welcome to SafeNex. This platform is created to share insights on safety systems, engineering best practices, and modern technology trends. Stay tuned for regular updates."
+  },
+  {
+    "id": 2,
+    "title": "Why Safety Matters in Engineering",
+    "date": "11 December 2025",
+    "excerpt": "Safety is a fundamental requirement in every engineering project.",
+    "content": "Engineering projects must prioritize safety at every stage. From design to execution, safety reduces failures, protects lives, and ensures long-term reliability."
+  }
+]

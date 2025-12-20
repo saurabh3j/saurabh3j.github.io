@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeNex | Blog</title>
+    <meta name="description" content="SafeNex blog on technology, safety, and engineering insights.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>SafeNex</h1>
+    <p>Technology • Safety • Engineering</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+</nav>
+
+<main id="posts"></main>
+
+<footer>
+    <p>© 2025 SafeNex. All rights reserved.</p>
+</footer>
+
+<script>
+fetch('posts.json')
+.then(response => response.json())
+.then(posts => {
+    const container = document.getElementById('posts');
+    posts.forEach(post => {
+        container.innerHTML += `
+            <article>
+                <h2>${post.title}</h2>
+                <p class="date">${post.date}</p>
+                <p>${post.excerpt}</p>
+                <a href="post.html?id=${post.id}">Read more →</a>
+            </article>
+        `;
+    });
+});
+</script>
+
+</body>
+</html>
