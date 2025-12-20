@@ -1,64 +1,26 @@
-body {
+.hero {
+  height: 320px;
+  background: url('images/bg.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(10, 37, 64, 0.6);
+  padding: 30px 50px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  color: #ffffff;
+  font-size: 42px;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f9;
-  color: #333;
 }
 
-.site-header {
-  background: #0a2540;
-  color: white;
-  text-align: center;
-  padding: 30px;
-}
-
-.navbar {
-  background: #ffffff;
-  text-align: center;
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-}
-
-.navbar a {
-  margin: 0 12px;
-  text-decoration: none;
-  color: #0a2540;
-  font-weight: bold;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.post-card, .post-full {
-  background: white;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.date {
-  font-size: 14px;
-  color: #777;
-}
-
-.read-more {
-  display: inline-block;
+.hero-overlay p {
+  color: #ffffff;
   margin-top: 10px;
-  color: #0a2540;
-  font-weight: bold;
-}
-
-.footer {
-  text-align: center;
-  background: #eaeaea;
-  padding: 15px;
-  font-size: 14px;
-}
-.site-logo {
-  max-width: 120px;
-  margin-bottom: 10px;
+  font-size: 18px;
 }
