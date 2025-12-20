@@ -49,13 +49,13 @@
 }
 
 .post-content .date {
-  font-size: 42px;
+  font-size: 10px;
   color: #777;
   margin: 6px 0 10px;
 }
 
 .post-content p {
-  margin: 0 0 2px;
+  margin: 2px;
   color: #444;
 }
 
