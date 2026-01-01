@@ -1,7 +1,9 @@
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
-import{getAuth}from'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
-import{getFirestore}from'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-const firebaseConfig={apiKey:'PASTE_KEY',authDomain:'safenex.firebaseapp.com',projectId:'safenex'};
-export const app=initializeApp(firebaseConfig);
-export const auth=getAuth(app);
-export const db=getFirestore(app);
+const firebaseConfig = {
+  apiKey: "AIzaSyBZjmaAQkX4qzWt3JBVzVtPbVtGPbb7EXI",
+  authDomain: "safenex-33a34.firebaseapp.com",
+  projectId: "safenex-33a34",
+  storageBucket: "safenex-33a34.firebasestorage.app",
+  messagingSenderId: "721188802838",
+  appId: "1:721188802838:web:f75bb9081d12ccb667c037",
+  measurementId: "G-7SDMCY7942"
+};
