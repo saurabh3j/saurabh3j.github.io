@@ -1,7 +1,45 @@
-import{db}from'./firebase.js';
-import{addDoc,collection}from'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-window.send=async()=>{
-await addDoc(collection(db,'contacts'),{name:name.value,email:email.value,message:message.value,createdAt:new Date()});
-alert('Message sent successfully');
-name.value=email.value=message.value='';
-};
+import { db } from "./firebase.js";
+import {
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sendBtn = document.getElementById("sendBtn");
+
+  if (!sendBtn) {
+    console.error("Send button not found");
+    return;
+  }
+
+  sendBtn.onclick = async () => {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const status = document.getElementById("status");
+
+    if (!name || !email || !message) {
+      status.textContent = "Please fill all fields ❗";
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        name,
+        email,
+        message,
+        createdAt: serverTimestamp()
+      });
+
+      status.textContent = "Message sent successfully ✅";
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+
+    } catch (err) {
+      console.error(err);
+      status.textContent = "Failed to send message ❌";
+    }
+  };
+});
