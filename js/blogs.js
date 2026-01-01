@@ -7,9 +7,14 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const blogsContainer = document.getElementById("blogsContainer");
+document.addEventListener("DOMContentLoaded", async () => {
+  const blogsContainer = document.getElementById("blogsContainer");
 
-async function loadBlogs() {
+  if (!blogsContainer) {
+    console.error("blogsContainer not found");
+    return;
+  }
+
   const q = query(
     collection(db, "blogs"),
     where("published", "==", true),
@@ -18,7 +23,7 @@ async function loadBlogs() {
 
   const snapshot = await getDocs(q);
 
-  blogsContainer.innerHTML = ""; // IMPORTANT
+  blogsContainer.innerHTML = ""; // clear first
 
   snapshot.forEach(doc => {
     const blog = doc.data();
@@ -27,9 +32,9 @@ async function loadBlogs() {
     card.className = "blog-card";
 
     card.innerHTML = `
-      <img src="${blog.imageUrl}" alt="${blog.Title}">
+      <img src="${blog.imageUrl}" alt="${blog.title}">
       <div class="content">
-        <h3>${blog.Title}</h3>
+        <h3>${blog.title}</h3>
         <p>${blog.content.substring(0, 120)}...</p>
         <a href="post.html?slug=${blog.slug}">Read more →</a>
       </div>
@@ -37,6 +42,4 @@ async function loadBlogs() {
 
     blogsContainer.appendChild(card);
   });
-}
-
-loadBlogs();
+});
