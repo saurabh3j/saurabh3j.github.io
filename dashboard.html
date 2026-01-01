@@ -1,34 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SAFENEX Dashboard</title>
-<link rel="stylesheet" href="css/main.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>SAFENEX Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
+
 <header class="navbar">
-  <img src="assets/logo.svg" class="logo">
-  <button id="logoutBtn" type="button">Logout</button>
+  <!-- LOGO CLICK → HOME -->
+  <a href="index.html">
+    <img src="assets/logo.svg" class="logo" alt="Safenex">
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <button id="logoutBtn" type="button">Logout</button>
+  </nav>
 </header>
 
 <main class="dashboard">
+
   <h1>Admin Dashboard</h1>
 
-  <div class="admin-form">
+  <!-- BLOG FORM -->
+  <section class="admin-form">
     <input id="title" placeholder="Blog title">
     <input id="category" placeholder="Category (HAZOP, LOPA, SIL…)">
     <textarea id="content" placeholder="Blog content"></textarea>
-    <button onclick="addBlog()">Publish / Update</button>
-  </div>
+    <button id="publishBtn">Publish Blog</button>
+  </section>
 
-  <h2>Blogs</h2>
-  <div id="blogs"></div>
+  <hr>
 
-  <h2>Inbox</h2>
-  <div id="messages"></div>
+  <!-- BLOG LIST -->
+  <section>
+    <h2>Blogs</h2>
+    <div id="blogs"></div>
+  </section>
+
+  <hr>
+
+  <!-- INBOX -->
+  <section>
+    <h2>Inbox</h2>
+    <div id="messages"></div>
+  </section>
+
 </main>
 
+<!-- IMPORTANT: admin.js FIRST, guard.js SECOND -->
 <script type="module" src="js/admin.js"></script>
 <script type="module" src="js/guard.js"></script>
+
 </body>
 </html>
