@@ -1,5 +1,5 @@
 import { db } from "./firebase.js";
-import { collection, addDoc, serverTimestamp } 
+import { collection, addDoc, serverTimestamp }
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const status = document.getElementById("status");
 
     if (!name || !email || !message) {
-      status.textContent = "Please fill all fields";
+      status.textContent = "Please fill all fields ❗";
       return;
     }
 
