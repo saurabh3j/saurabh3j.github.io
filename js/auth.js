@@ -1,9 +1,22 @@
-import{auth}from'./firebase.js';
-import{signInWithEmailAndPassword,signOut}from'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
-const admins=['admin@safenex.co.in','saurabhs.yedekar@gmail.com'];
-window.login=()=>{
-signInWithEmailAndPassword(auth,email.value,password.value)
-.then(u=>{admins.includes(u.user.email)?location.href='dashboard.html':signOut(auth)})
-.catch(e=>error.innerText=e.message)
-}
-window.logout=()=>signOut(auth).then(()=>location.href='login.html');
+import { auth } from "./firebase.js";
+import { signInWithEmailAndPassword } from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const loginBtn = document.getElementById("loginBtn");
+
+loginBtn.addEventListener("click", async () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    window.location.href = "dashboard.html";
+  } catch (err) {
+    alert(err.message);
+  }
+});
