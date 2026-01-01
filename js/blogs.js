@@ -9,11 +9,7 @@ import {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const blogsContainer = document.getElementById("blogsContainer");
-
-  if (!blogsContainer) {
-    console.error("blogsContainer not found in DOM");
-    return;
-  }
+  if (!blogsContainer) return;
 
   const q = query(
     collection(db, "blogs"),
@@ -31,10 +27,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     card.className = "blog-card";
 
     card.innerHTML = `
-      <img src="${blog.imageUrl}" alt="${blog.title}">
+      <img src="${blog.imageUrl}" alt="${blog.title || "Blog image"}">
       <div class="content">
-        <h3>${blog.title}</h3>
-        <p>${blog.content.substring(0, 120)}...</p>
+        <h3>${blog.title || "Untitled Article"}</h3>
+        <p>${(blog.content || "").substring(0, 120)}...</p>
         <a href="post.html?slug=${blog.slug}">Read more →</a>
       </div>
     `;
