@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SAFENEX Dashboard</title>
+<link rel="stylesheet" href="css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header class="navbar">
+  <img src="assets/logo.svg" class="logo">
+  <button onclick="logout()">Logout</button>
+</header>
+
+<main class="dashboard">
+  <h1>Admin Dashboard</h1>
+
+  <div class="admin-form">
+    <input id="title" placeholder="Blog title">
+    <input id="category" placeholder="Category (HAZOP, LOPA, SIL…)">
+    <textarea id="content" placeholder="Blog content"></textarea>
+    <button onclick="addBlog()">Publish / Update</button>
+  </div>
+
+  <h2>Blogs</h2>
+  <div id="blogs"></div>
+
+  <h2>Inbox</h2>
+  <div id="messages"></div>
+</main>
+
+<script type="module" src="js/admin.js"></script>
+<script type="module" src="js/guard.js"></script>
+</body>
+</html>
