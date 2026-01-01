@@ -7,7 +7,7 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const blogsContainer = document.getElementById("blogsContainer");
+const blogsContainer = document.getElementById("blog-list");
 
 async function loadBlogs() {
   const q = query(
@@ -17,6 +17,7 @@ async function loadBlogs() {
   );
 
   const snapshot = await getDocs(q);
+  blogsContainer.innerHTML = "";
 
   snapshot.forEach(doc => {
     const blog = doc.data();
