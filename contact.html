@@ -1,37 +1,47 @@
-import { db } from "./firebase.js";
-import { collection, addDoc, serverTimestamp }
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | SAFENEX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css">
+</head>
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sendBtn = document.getElementById("sendBtn");
+<body>
 
-  sendBtn.addEventListener("click", async () => {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const status = document.getElementById("status");
+<header class="navbar">
+  <img src="assets/logo.svg" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Admin</a>
+  </nav>
+</header>
 
-    if (!name || !email || !message) {
-      status.textContent = "Please fill all fields ❗";
-      return;
-    }
+<section class="contact-section">
+  <h1>Contact SAFENEX</h1>
 
-    try {
-      await addDoc(collection(db, "contacts"), {
-        name,
-        email,
-        message,
-        createdAt: serverTimestamp()
-      });
+  <p>
+    📧 Email us directly at
+    <a href="mailto:contact@safenex.co.in">contact@safenex.co.in</a>
+  </p>
 
-      status.textContent = "Message sent successfully ✅";
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("message").value = "";
+  <div class="contact-form">
+    <input id="name" placeholder="Your Name">
+    <input id="email" placeholder="Your Email">
+    <textarea id="message" placeholder="Your Message"></textarea>
 
-    } catch (err) {
-      console.error(err);
-      status.textContent = "Failed to send message ❌";
-    }
-  });
-});
+    <button id="sendBtn">Send Message</button>
+    <p id="status"></p>
+  </div>
+</section>
+
+<footer>
+  © 2026 SAFENEX · Process Safety Engineering
+</footer>
+
+<!-- ✅ THIS IS CRITICAL -->
+<script type="module" src="js/contact.js"></script>
+
+</body>
+</html>
