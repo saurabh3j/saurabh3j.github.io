@@ -4,12 +4,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "PASTE_REAL_API_KEY_HERE",
+  apiKey: "AIzaSyBZjmaAQkX4qzWt3JBVzVtPbVtGPbb7EXI",
   authDomain: "safenex-33a34.firebaseapp.com",
   projectId: "safenex-33a34",
   storageBucket: "safenex-33a34.appspot.com",
   messagingSenderId: "721188802838",
-  appId: "PASTE_REAL_APP_ID_HERE"
+  appId: "1:721188802838:web:f75bb9081d12ccb667c037"
 };
 
 const app = initializeApp(firebaseConfig);
