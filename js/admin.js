@@ -1,21 +1,69 @@
-import { auth } from "./firebase.js";
-import { signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+let editingId = null;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtn = document.getElementById("logoutBtn");
+async function load() {
+  blogs.innerHTML = "";
 
-  if (!logoutBtn) {
-    console.error("Logout button not found");
-    return;
+  const snapshot = await getDocs(blogRef);
+  snapshot.forEach(d => {
+    const blog = d.data();
+
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <b>${blog.title}</b>
+      <button onclick="editBlog('${d.id}')">Edit</button>
+      <button onclick="deleteBlog('${d.id}')">Delete</button>
+      <hr>
+    `;
+
+    blogs.appendChild(div);
+  });
+}
+
+window.editBlog = async (id) => {
+  const docRef = doc(db, "blogs", id);
+  const snap = await getDoc(docRef);
+
+  if (!snap.exists()) return;
+
+  const blog = snap.data();
+
+  title.value = blog.title;
+  category.value = blog.category;
+  content.value = blog.content;
+
+  editingId = id;
+};
+
+window.addBlog = async () => {
+  if (editingId) {
+    // UPDATE
+    await updateDoc(doc(db, "blogs", editingId), {
+      title: title.value,
+      category: category.value,
+      content: content.value,
+      updatedAt: new Date()
+    });
+
+    editingId = null;
+  } else {
+    // CREATE
+    await addDoc(blogRef, {
+      title: title.value,
+      category: category.value,
+      content: content.value,
+      author: auth.currentUser.email,
+      createdAt: new Date(),
+      published: true
+    });
   }
 
-  logoutBtn.addEventListener("click", async () => {
-    try {
-      await signOut(auth);
-      window.location.href = "login.html";
-    } catch (err) {
-      console.error("Logout error:", err);
-      alert("Logout failed");
-    }
-  });
-});
+  title.value = category.value = content.value = "";
+  load();
+};
+
+window.deleteBlog = async (id) => {
+  if (confirm("Delete this blog?")) {
+    await deleteDoc(doc(db, "blogs", id));
+    load();
+  }
+};
