@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const blogsContainer = document.getElementById("blogsContainer");
 
   if (!blogsContainer) {
-    console.error("blogsContainer not found");
+    console.error("blogsContainer not found in DOM");
     return;
   }
 
@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
   const snapshot = await getDocs(q);
-
-  blogsContainer.innerHTML = ""; // clear first
+  blogsContainer.innerHTML = "";
 
   snapshot.forEach(doc => {
     const blog = doc.data();
