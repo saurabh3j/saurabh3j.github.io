@@ -7,20 +7,21 @@ import {
 
 document.addEventListener("DOMContentLoaded", () => {
   const sendBtn = document.getElementById("sendBtn");
+  const status = document.getElementById("status");
 
   if (!sendBtn) {
     console.error("Send button not found");
     return;
   }
 
-  sendBtn.onclick = async () => {
+  sendBtn.addEventListener("click", async () => {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
-    const status = document.getElementById("status");
 
     if (!name || !email || !message) {
       status.textContent = "Please fill all fields ❗";
+      status.style.color = "red";
       return;
     }
 
@@ -33,13 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       status.textContent = "Message sent successfully ✅";
+      status.style.color = "green";
+
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       document.getElementById("message").value = "";
 
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error("Error sending message:", error);
       status.textContent = "Failed to send message ❌";
+      status.style.color = "red";
     }
-  };
+  });
 });
