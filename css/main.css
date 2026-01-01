@@ -14,3 +14,59 @@ button{padding:12px 20px;background:#2563eb;color:#fff;border:none;border-radius
 .dashboard{padding:40px}
 .admin-form{max-width:700px}
 .contact{max-width:600px;margin:60px auto;padding:20px}
+.blogs-section {
+  padding: 60px 8%;
+  background: #f6f8fc;
+}
+
+.blogs-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #0b1f44;
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card .content {
+  padding: 18px;
+}
+
+.blog-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.blog-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.blog-card a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #1f4ed8;
+  font-weight: 600;
+  text-decoration: none;
+}
