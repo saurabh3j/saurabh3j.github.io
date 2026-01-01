@@ -1,69 +1,105 @@
+import { db, auth } from "./firebase.js";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 let editingId = null;
 
-async function load() {
-  blogs.innerHTML = "";
+const blogRef = collection(db, "blogs");
+
+const titleInput = document.getElementById("title");
+const categoryInput = document.getElementById("category");
+const contentInput = document.getElementById("content");
+const blogsDiv = document.getElementById("blogs");
+const publishBtn = document.getElementById("publishBtn");
+
+async function loadBlogs() {
+  blogsDiv.innerHTML = "";
 
   const snapshot = await getDocs(blogRef);
-  snapshot.forEach(d => {
+  snapshot.forEach((d) => {
     const blog = d.data();
 
     const div = document.createElement("div");
     div.innerHTML = `
       <b>${blog.title}</b>
-      <button onclick="editBlog('${d.id}')">Edit</button>
-      <button onclick="deleteBlog('${d.id}')">Delete</button>
+      <button class="edit-btn">Edit</button>
+      <button class="delete-btn">Delete</button>
       <hr>
     `;
 
-    blogs.appendChild(div);
+    div.querySelector(".edit-btn").addEventListener("click", () => {
+      editBlog(d.id);
+    });
+
+    div.querySelector(".delete-btn").addEventListener("click", () => {
+      deleteBlog(d.id);
+    });
+
+    blogsDiv.appendChild(div);
   });
 }
 
-window.editBlog = async (id) => {
-  const docRef = doc(db, "blogs", id);
-  const snap = await getDoc(docRef);
-
+async function editBlog(id) {
+  const snap = await getDoc(doc(db, "blogs", id));
   if (!snap.exists()) return;
 
   const blog = snap.data();
 
-  title.value = blog.title;
-  category.value = blog.category;
-  content.value = blog.content;
+  titleInput.value = blog.title;
+  categoryInput.value = blog.category;
+  contentInput.value = blog.content;
 
   editingId = id;
-};
+  publishBtn.textContent = "Update Blog";
+}
 
-window.addBlog = async () => {
+async function saveBlog() {
+  if (!titleInput.value || !contentInput.value) {
+    alert("Title and content required");
+    return;
+  }
+
   if (editingId) {
-    // UPDATE
     await updateDoc(doc(db, "blogs", editingId), {
-      title: title.value,
-      category: category.value,
-      content: content.value,
+      title: titleInput.value,
+      category: categoryInput.value,
+      content: contentInput.value,
       updatedAt: new Date()
     });
 
     editingId = null;
+    publishBtn.textContent = "Publish Blog";
   } else {
-    // CREATE
     await addDoc(blogRef, {
-      title: title.value,
-      category: category.value,
-      content: content.value,
+      title: titleInput.value,
+      category: categoryInput.value,
+      content: contentInput.value,
       author: auth.currentUser.email,
       createdAt: new Date(),
       published: true
     });
   }
 
-  title.value = category.value = content.value = "";
-  load();
-};
+  titleInput.value = "";
+  categoryInput.value = "";
+  contentInput.value = "";
 
-window.deleteBlog = async (id) => {
-  if (confirm("Delete this blog?")) {
-    await deleteDoc(doc(db, "blogs", id));
-    load();
-  }
-};
+  loadBlogs();
+}
+
+async function deleteBlog(id) {
+  if (!confirm("Delete this blog?")) return;
+  await deleteDoc(doc(db, "blogs", id));
+  loadBlogs();
+}
+
+publishBtn.addEventListener("click", saveBlog);
+
+loadBlogs();
